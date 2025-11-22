@@ -545,7 +545,7 @@ body {
     font-size: 16px;
 }
 
-/* COLUMN 3+: SKILLS GRID */
+/* COLUMN 3: SKILLS GRID (4 COLUMNS) */
 .col-skills {
     display: flex;
     flex-direction: column;
@@ -554,8 +554,14 @@ body {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.skills-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .skill-section {
@@ -566,8 +572,8 @@ body {
 .section-header {
     background: var(--red-primary);
     color: var(--bg-black);
-    padding: 4px 8px;
-    font-size: 10px;
+    padding: 3px 6px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -578,17 +584,17 @@ body {
 .skill-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .skill-table thead th {
     background: var(--bg-dark);
     color: var(--text-dim);
-    padding: 3px 4px;
+    padding: 2px 3px;
     text-align: center;
-    font-size: 8px;
+    font-size: 7px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     border-bottom: 1px solid var(--border-dim);
     font-family: 'Share Tech Mono', monospace;
@@ -599,13 +605,19 @@ body {
 }
 
 .skill-table tbody td {
-    padding: 3px 4px;
+    padding: 2px 3px;
     border-bottom: 1px solid rgba(255, 0, 51, 0.1);
 }
 
 .skill-table tbody td:first-child {
     color: var(--text-main);
     font-weight: 500;
+    font-size: 9px;
+}
+
+.skill-table tbody tr.indent td:first-child {
+    padding-left: 12px;
+    font-size: 9px;
 }
 
 .skill-table tbody tr:hover {
@@ -618,6 +630,11 @@ body {
     text-align: center;
     color: var(--text-dim);
     font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+}
+
+.skill-table .lvl {
+    text-align: center;
 }
 
 .skill-table .lvl input {
@@ -625,10 +642,10 @@ body {
     background: var(--input-bg);
     border: 1px solid var(--border-dim);
     color: var(--red-primary);
-    padding: 2px 4px;
+    padding: 1px 2px;
     text-align: center;
     font-family: 'Rajdhani', monospace;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
 }
 
@@ -642,34 +659,32 @@ body {
 .weapons-section {
     background: var(--bg-panel);
     border: 2px solid var(--border-dim);
-    padding: 10px;
-    margin-top: 10px;
+    padding: 8px;
+    margin-top: 8px;
 }
 
 .weapons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 12px;
-    margin-top: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
 }
 
 .weapon-col,
-.cyberweapon-col,
-.vehicle-col {
+.cyberweapon-col {
     background: var(--bg-dark);
     border: 1px solid var(--border-dim);
-    padding: 8px;
+    padding: 6px;
 }
 
 .weapon-col h5,
-.cyberweapon-col h5,
-.vehicle-col h5 {
-    font-size: 10px;
+.cyberweapon-col h5 {
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 1px;
     color: var(--red-primary);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     padding-bottom: 3px;
     border-bottom: 1px solid var(--border-dim);
 }
@@ -677,25 +692,26 @@ body {
 .weapons-grid table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 10px;
+    font-size: 9px;
 }
 
 .weapons-grid table thead th {
     background: var(--bg-black);
     color: var(--text-dim);
-    padding: 3px 4px;
+    padding: 2px 3px;
     text-align: left;
-    font-size: 8px;
+    font-size: 7px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     border-bottom: 1px solid var(--border-dim);
 }
 
 .weapons-grid table tbody td {
-    padding: 3px 4px;
+    padding: 2px 3px;
     border-bottom: 1px solid rgba(255, 0, 51, 0.08);
     color: var(--text-dim);
+    font-size: 8px;
 }
 
 .weapons-grid table tbody tr.highlight td {
@@ -707,9 +723,9 @@ body {
     background: transparent;
     border: none;
     color: inherit;
-    padding: 2px;
+    padding: 1px;
     font-family: 'Rajdhani', monospace;
-    font-size: 10px;
+    font-size: 9px;
 }
 
 .weapons-grid table input:focus {
@@ -718,13 +734,13 @@ body {
 }
 
 .btn-add {
-    margin-top: 6px;
+    margin-top: 5px;
     background: transparent;
     border: 1px solid var(--red-primary);
     color: var(--red-primary);
-    padding: 3px 8px;
+    padding: 2px 6px;
     font-family: 'Rajdhani', monospace;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 700;
     letter-spacing: 1px;
     cursor: pointer;
@@ -737,25 +753,35 @@ body {
     color: var(--bg-black);
 }
 
-.upgrades {
-    margin-top: 8px;
-    padding-top: 6px;
+/* VEHICLE UPGRADES */
+.vehicle-upgrades {
+    margin-top: 6px;
+    padding-top: 5px;
     border-top: 1px solid var(--border-dim);
 }
 
-.upgrades p {
-    font-size: 9px;
+.vehicle-upgrades p {
+    font-size: 8px;
     color: var(--text-dim);
     margin: 2px 0;
     padding-left: 8px;
     position: relative;
 }
 
-.upgrades p::before {
+.vehicle-upgrades p::before {
     content: '▸';
     position: absolute;
     left: 0;
     color: var(--red-primary);
+}
+
+/* PENALTY STAR */
+.penalty-star {
+    text-align: center;
+    font-size: 48px;
+    color: var(--red-primary);
+    margin: 15px 0;
+    text-shadow: 0 0 10px var(--red-glow);
 }
 
 /* INPUT GLOBAL STYLES */
@@ -803,9 +829,19 @@ textarea:focus {
 }
 
 /* RESPONSIVE */
+@media (max-width: 1600px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 1400px) {
     .character-grid {
         grid-template-columns: 260px 70px 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -814,8 +850,18 @@ textarea:focus {
         grid-template-columns: 1fr;
     }
 
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .glitch {
         font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
     }
 }
 

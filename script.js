@@ -11,7 +11,7 @@ const stats = {
     luck: 3,
     move: 8,
     body: 8,
-    emp: 8
+    emp: 2  // Calculated from humanity
 };
 
 // Initialize the character sheet
@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePortraitUpload();
     attachEventListeners();
     loadCharacterData();
+
+    // Initial skill calculation
+    updateAllSkills();
 });
 
 // Initialize core stats
@@ -56,7 +59,7 @@ function initializeSkills() {
     skillRows.forEach(row => {
         const skillName = row.dataset.skill;
         const statName = row.dataset.stat;
-        const lvlInput = row.querySelector('[data-field="lvl"]');
+        const lvlInput = row.querySelector('.lvl');
 
         if (lvlInput) {
             lvlInput.addEventListener('input', function() {
@@ -69,21 +72,21 @@ function initializeSkills() {
 
 // Update a single skill row
 function updateSkillRow(row, statName) {
-    const lvlInput = row.querySelector('[data-field="lvl"]');
-    const modSpan = row.querySelector('[data-field="mod"]');
-    const statSpan = row.querySelector('[data-field="stat"]');
-    const baseSpan = row.querySelector('[data-field="base"]');
+    const lvlInput = row.querySelector('.lvl');
+    const modCell = row.querySelector('.mod');
+    const statCell = row.querySelector('.stat');
+    const baseCell = row.querySelector('.base');
 
-    if (!lvlInput || !statSpan || !baseSpan) return;
+    if (!lvlInput || !statCell || !baseCell) return;
 
     const lvl = parseInt(lvlInput.value) || 0;
     const statValue = stats[statName] || 0;
-    const mod = lvl * 2; // Modifier is level * 2
-    const base = statValue + mod;
+    const mod = lvl; // In some character sheets, modifier might be different
+    const base = statValue + lvl;
 
-    if (modSpan) modSpan.textContent = mod;
-    statSpan.textContent = statValue;
-    baseSpan.textContent = base;
+    if (modCell) modCell.textContent = mod;
+    statCell.textContent = statValue;
+    baseCell.textContent = base;
 }
 
 // Update all skills when stats change
@@ -96,6 +99,22 @@ function updateAllSkills() {
             updateSkillRow(row, statName);
         }
     });
+
+    // Update EMP displays
+    updateEmpDisplays();
+}
+
+// Update EMP displays in various locations
+function updateEmpDisplays() {
+    const empDisplay = document.getElementById('emp-display');
+    const empCurrent = document.getElementById('emp-current');
+    const empBase = document.getElementById('emp-base');
+    const empStatInput = document.getElementById('stat-emp');
+
+    if (empDisplay) empDisplay.textContent = stats.emp;
+    if (empCurrent) empCurrent.textContent = stats.emp;
+    if (empBase) empBase.textContent = 8; // Base EMP before humanity loss
+    if (empStatInput) empStatInput.value = stats.emp;
 }
 
 // Portrait upload functionality
@@ -124,7 +143,9 @@ function attachEventListeners() {
     // Auto-save on all input changes
     const inputs = document.querySelectorAll('input, textarea, select');
     inputs.forEach(input => {
-        input.addEventListener('change', saveCharacterData);
+        if (!input.classList.contains('lvl')) { // Skip skill level inputs (already handled)
+            input.addEventListener('change', saveCharacterData);
+        }
     });
 
     // Humanity and EMP calculation
@@ -138,12 +159,6 @@ function attachEventListeners() {
             const empStatInput = document.getElementById('stat-emp');
             if (empStatInput) {
                 empStatInput.value = empValue;
-            }
-
-            // Update EMP display in humanity section
-            const currentStatSpan = document.querySelector('.humanity-section .current-stat');
-            if (currentStatSpan) {
-                currentStatSpan.textContent = empValue;
             }
 
             updateAllSkills();
@@ -166,6 +181,7 @@ function attachEventListeners() {
         };
 
         hpMaxInput.addEventListener('input', updateWoundThreshold);
+        hpCurrentInput.addEventListener('input', saveCharacterData);
         updateWoundThreshold();
     }
 
@@ -233,7 +249,7 @@ function addVehicle() {
         <td><input type="text" placeholder="Vehicle Name"></td>
         <td><input type="text" placeholder="SDP"></td>
         <td><input type="number" placeholder="SP"></td>
-        <td>mph</td>
+        <td><input type="text" placeholder="Speed"></td>
     `;
     vehicleList.appendChild(newRow);
 
@@ -276,7 +292,7 @@ function getSkillData() {
 
     skillRows.forEach(row => {
         const skillName = row.dataset.skill;
-        const lvlInput = row.querySelector('[data-field="lvl"]');
+        const lvlInput = row.querySelector('.lvl');
         if (lvlInput) {
             skills[skillName] = parseInt(lvlInput.value) || 0;
         }
@@ -349,7 +365,7 @@ function loadCharacterData() {
             Object.entries(characterData.skills).forEach(([skillName, level]) => {
                 const row = document.querySelector(`[data-skill="${skillName}"]`);
                 if (row) {
-                    const lvlInput = row.querySelector('[data-field="lvl"]');
+                    const lvlInput = row.querySelector('.lvl');
                     if (lvlInput) {
                         lvlInput.value = level;
                         updateSkillRow(row, row.dataset.stat);
@@ -421,7 +437,7 @@ document.addEventListener('keydown', function(e) {
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: var(--accent-red);
+            background-color: var(--red-primary);
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
