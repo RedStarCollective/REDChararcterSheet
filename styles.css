@@ -1,0 +1,705 @@
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #1a1a1a;
+    --tertiary-bg: #2a2a2a;
+    --accent-red: #ff0040;
+    --accent-red-dark: #cc0033;
+    --border-color: #ff0040;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #888888;
+    --highlight-bg: #330011;
+    --input-bg: #151515;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sheet-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-red);
+    padding-bottom: 15px;
+}
+
+.sheet-header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent-red);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.sheet-header h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.character-sheet {
+    display: grid;
+    grid-template-columns: 320px 1fr 1fr;
+    gap: 20px;
+}
+
+.section {
+    background-color: var(--secondary-bg);
+    border: 2px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.section h3 {
+    color: var(--accent-red);
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.section h4 {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 10px 0 5px 0;
+}
+
+/* Character Portrait */
+.character-portrait {
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--tertiary-bg);
+}
+
+.character-portrait img {
+    max-width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border: 2px solid var(--accent-red);
+}
+
+.upload-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+    border: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: var(--accent-red-dark);
+    box-shadow: 0 0 10px var(--accent-red);
+}
+
+/* Character Info */
+.character-info {
+    padding: 15px;
+}
+
+.info-field {
+    margin-bottom: 15px;
+}
+
+.info-field label {
+    display: block;
+    color: var(--accent-red);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.info-field input,
+.info-field select {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.info-field input:focus,
+.info-field select:focus {
+    outline: none;
+    border-color: var(--accent-red);
+    box-shadow: 0 0 5px var(--accent-red);
+}
+
+/* Special Ability */
+.special-ability {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--tertiary-bg);
+    border: 1px solid var(--border-color);
+}
+
+.ability-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent-red);
+    margin-bottom: 5px;
+}
+
+.ability-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.ability-rank {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ability-rank span {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-red);
+}
+
+.ability-rank input {
+    flex: 1;
+    padding: 8px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Notes */
+.notes textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.notes textarea:focus {
+    outline: none;
+    border-color: var(--accent-red);
+    box-shadow: 0 0 5px var(--accent-red);
+}
+
+/* Stats Bottom Section */
+.stats-bottom {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.humanity-section,
+.hit-points-section,
+.critical-section {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.critical-section {
+    border-bottom: none;
+}
+
+.stat-display {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.stat-display input {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--accent-red);
+    color: var(--accent-red);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.stat-calc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.stat-calc span {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.current-stat {
+    color: var(--accent-red);
+}
+
+.base-stat {
+    color: var(--text-secondary);
+}
+
+.hp-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.hp-box input {
+    width: 80px;
+    padding: 10px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--accent-red);
+    color: var(--accent-red);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.max-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.wound-status,
+.death-save {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.threshold {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-red);
+    margin: 5px 0;
+}
+
+.wound-status p {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.death-save input {
+    width: 60px;
+    padding: 8px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--accent-red);
+    color: var(--accent-red);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.critical-display {
+    margin-top: 10px;
+}
+
+.silver-badge {
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.critical-display textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    resize: vertical;
+}
+
+/* Core Stats */
+.core-stats {
+    padding: 10px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    background-color: var(--tertiary-bg);
+    border: 1px solid var(--border-color);
+}
+
+.stat-row.highlight {
+    background-color: var(--highlight-bg);
+    border: 2px solid var(--accent-red);
+}
+
+.stat-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-red);
+    letter-spacing: 1px;
+    min-width: 60px;
+}
+
+.stat-value {
+    width: 60px;
+    padding: 6px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.luck-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.luck-display .stat-value.small {
+    width: 50px;
+    font-size: 20px;
+}
+
+.out-of {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 10px;
+}
+
+.skill-category {
+    margin-bottom: 20px;
+}
+
+.category-header {
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.skill-table {
+    background-color: var(--tertiary-bg);
+}
+
+.skill-header {
+    display: grid;
+    grid-template-columns: 1fr 50px 50px 50px 50px;
+    gap: 5px;
+    padding: 6px 8px;
+    background-color: var(--secondary-bg);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.skill-row {
+    display: grid;
+    grid-template-columns: 1fr 50px 50px 50px 50px;
+    gap: 5px;
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(255, 0, 64, 0.2);
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.skill-row:hover {
+    background-color: rgba(255, 0, 64, 0.1);
+}
+
+.skill-row.highlight {
+    background-color: var(--highlight-bg);
+}
+
+.skill-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.skill-mod,
+.skill-stat,
+.skill-base {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.skill-lvl {
+    width: 100%;
+    padding: 4px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--accent-red);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.skill-lvl:focus {
+    outline: none;
+    border-color: var(--accent-red);
+    box-shadow: 0 0 3px var(--accent-red);
+}
+
+/* Cyberweapon Skills */
+.skill-row.cyberweapon {
+    grid-template-columns: 1fr 60px 60px 60px;
+}
+
+.skill-row.cyberweapon .skill-name.highlighted {
+    color: var(--accent-red);
+}
+
+/* Weapons and Armor */
+.weapons-armor {
+    padding: 15px;
+}
+
+.weapon-tables {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.armor-table,
+.weapon-table {
+    background-color: var(--tertiary-bg);
+    padding: 15px;
+    border: 1px solid var(--border-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color: var(--secondary-bg);
+}
+
+table th {
+    padding: 8px;
+    text-align: left;
+    color: var(--accent-red);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border-color);
+}
+
+table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(255, 0, 64, 0.2);
+}
+
+table td input {
+    width: 100%;
+    padding: 4px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+}
+
+table td input[type="number"] {
+    text-align: center;
+}
+
+.add-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: transparent;
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+}
+
+/* Vehicles */
+.vehicles-section {
+    padding: 15px;
+}
+
+.vehicle-table {
+    background-color: var(--tertiary-bg);
+    padding: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.vehicle-details {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+}
+
+.vehicle-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.vehicle-details li {
+    padding: 5px 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.vehicle-details li:before {
+    content: "▸ ";
+    color: var(--accent-red);
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Input Styles */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-red);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-red-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1600px) {
+    .character-sheet {
+        grid-template-columns: 300px 1fr;
+    }
+
+    .right-column {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .character-sheet {
+        grid-template-columns: 1fr;
+    }
+
+    .left-column,
+    .middle-column,
+    .right-column {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .skill-row {
+        grid-template-columns: 1fr 40px 40px 40px 40px;
+        font-size: 12px;
+    }
+
+    .skill-header {
+        grid-template-columns: 1fr 40px 40px 40px 40px;
+        font-size: 10px;
+    }
+
+    .sheet-header h1 {
+        font-size: 32px;
+    }
+
+    .sheet-header h2 {
+        font-size: 18px;
+    }
+}

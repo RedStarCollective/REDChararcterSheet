@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk RED Character Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="sheet-header">
+            <h1>CYBERPUNK RED</h1>
+            <h2>CHARACTER SHEET</h2>
+        </header>
+
+        <div class="character-sheet">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Character Portrait -->
+                <div class="section character-portrait">
+                    <img id="portrait" src="" alt="Character Portrait">
+                    <input type="file" id="portrait-upload" accept="image/*" style="display: none;">
+                    <button onclick="document.getElementById('portrait-upload').click()" class="upload-btn">Upload Portrait</button>
+                </div>
+
+                <!-- Character Info -->
+                <div class="section character-info">
+                    <div class="info-field">
+                        <label>Handle</label>
+                        <input type="text" id="handle" placeholder="MG">
+                    </div>
+                    <div class="info-field">
+                        <label>Role</label>
+                        <select id="role">
+                            <option value="rockerboy">Rockerboy</option>
+                            <option value="solo" selected>Solo</option>
+                            <option value="netrunner">Netrunner</option>
+                            <option value="tech">Tech</option>
+                            <option value="medtech">Medtech</option>
+                            <option value="media">Media</option>
+                            <option value="exec">Exec</option>
+                            <option value="lawman">Lawman</option>
+                            <option value="fixer">Fixer</option>
+                            <option value="nomad">Nomad</option>
+                        </select>
+                    </div>
+                    <div class="special-ability">
+                        <h3>Special Ability</h3>
+                        <div class="ability-name">Combat Awareness</div>
+                        <div class="ability-desc">Medicine</div>
+                        <h4>Special Ability Rank</h4>
+                        <div class="ability-rank">
+                            <span>8</span>
+                            <input type="number" id="ability-rank" value="8" min="0" max="10">
+                            <span>5</span>
+                        </div>
+                    </div>
+                    <div class="notes">
+                        <h3>Notes</h3>
+                        <textarea id="notes" placeholder="Ranged Evasion is only used for Autofire/Shell Attacks. Out The Yin Yang is used for all other ranged attacks."></textarea>
+                    </div>
+                </div>
+
+                <!-- Humanity and Hit Points -->
+                <div class="section stats-bottom">
+                    <div class="humanity-section">
+                        <h3>Humanity</h3>
+                        <div class="stat-display">
+                            <input type="number" id="humanity" value="24" min="0" max="100">
+                        </div>
+                        <h3>EMP</h3>
+                        <div class="stat-calc">
+                            <span class="current-stat">2</span>
+                            <span>=</span>
+                            <span class="base-stat">8</span>
+                        </div>
+                    </div>
+                    <div class="hit-points-section">
+                        <h3>Hit Points</h3>
+                        <div class="hp-display">
+                            <div class="hp-box">
+                                <input type="number" id="hp-current" value="50" min="0">
+                            </div>
+                            <span class="max-label">out of</span>
+                            <div class="hp-box">
+                                <input type="number" id="hp-max" value="50" min="0">
+                            </div>
+                        </div>
+                        <div class="wound-status">
+                            <h4>Seriously Wounded</h4>
+                            <div class="threshold">25</div>
+                            <p>-2 to All Actions when Seriously Wounded</p>
+                        </div>
+                        <div class="death-save">
+                            <h4>Death Save</h4>
+                            <input type="number" id="death-save" value="8" min="0" max="10">
+                        </div>
+                    </div>
+                    <div class="critical-section">
+                        <h3>Critical Injuries & Addictions</h3>
+                        <div class="critical-display">
+                            <div class="silver-badge">TT Silver</div>
+                            <textarea id="critical-injuries" placeholder="Penalty applies to REF, DEX, & MOVE"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Column -->
+            <div class="middle-column">
+                <!-- Core Stats -->
+                <div class="section core-stats">
+                    <div class="stat-row">
+                        <div class="stat-label">INT</div>
+                        <input type="number" class="stat-value" id="stat-int" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">REF</div>
+                        <input type="number" class="stat-value" id="stat-ref" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">DEX</div>
+                        <input type="number" class="stat-value" id="stat-dex" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">TECH</div>
+                        <input type="number" class="stat-value" id="stat-tech" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">COOL</div>
+                        <input type="number" class="stat-value" id="stat-cool" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">WILL</div>
+                        <input type="number" class="stat-value" id="stat-will" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row highlight">
+                        <div class="stat-label">LUCK</div>
+                        <div class="luck-display">
+                            <input type="number" class="stat-value small" id="luck-current" value="3" min="0" max="10">
+                            <span class="out-of">out of</span>
+                            <input type="number" class="stat-value small" id="luck-max" value="3" min="0" max="10">
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">MOVE</div>
+                        <input type="number" class="stat-value" id="stat-move" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">BODY</div>
+                        <input type="number" class="stat-value" id="stat-body" value="8" min="1" max="10">
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label">EMP</div>
+                        <input type="number" class="stat-value" id="stat-emp" value="8" min="1" max="10">
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="section skills-section">
+                    <!-- Awareness Skills -->
+                    <div class="skill-category">
+                        <h3 class="category-header">Awareness Skills</h3>
+                        <div class="skill-table">
+                            <div class="skill-header">
+                                <span class="skill-name-col"></span>
+                                <span class="skill-mod">MOD</span>
+                                <span class="skill-lvl">LVL</span>
+                                <span class="skill-stat">STAT</span>
+                                <span class="skill-base">BASE</span>
+                            </div>
+                            <div class="skill-row" data-skill="concentration" data-stat="will">
+                                <span class="skill-name">Concentration (WILL)</span>
+                                <span class="skill-mod" data-field="mod">2</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">2</span>
+                            </div>
+                            <div class="skill-row" data-skill="conceal-reveal" data-stat="int">
+                                <span class="skill-name">Conceal/Reveal Object (INT)</span>
+                                <span class="skill-mod" data-field="mod">2</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">12</span>
+                            </div>
+                            <div class="skill-row" data-skill="lip-reading" data-stat="int">
+                                <span class="skill-name">Lip Reading (INT)</span>
+                                <span class="skill-mod" data-field="mod">2</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">12</span>
+                            </div>
+                            <div class="skill-row" data-skill="perception" data-stat="int">
+                                <span class="skill-name">Perception (INT)</span>
+                                <span class="skill-mod" data-field="mod">2</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="4" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">14</span>
+                            </div>
+                            <div class="skill-row" data-skill="tracking" data-stat="int">
+                                <span class="skill-name">Tracking (INT)</span>
+                                <span class="skill-mod" data-field="mod">2</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Body Skills -->
+                    <div class="skill-category">
+                        <h3 class="category-header">Body Skills</h3>
+                        <div class="skill-table">
+                            <div class="skill-header">
+                                <span class="skill-name-col"></span>
+                                <span class="skill-mod">MOD</span>
+                                <span class="skill-lvl">LVL</span>
+                                <span class="skill-stat">STAT</span>
+                                <span class="skill-base">BASE</span>
+                            </div>
+                            <div class="skill-row" data-skill="athletics" data-stat="dex">
+                                <span class="skill-name">Athletics (DEX)</span>
+                                <span class="skill-mod" data-field="mod">0</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">8</span>
+                            </div>
+                            <div class="skill-row" data-skill="contortionist" data-stat="dex">
+                                <span class="skill-name">Contortionist (DEX)</span>
+                                <span class="skill-mod" data-field="mod">1</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="1" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">10</span>
+                            </div>
+                            <div class="skill-row" data-skill="dance" data-stat="dex">
+                                <span class="skill-name">Dance (DEX)</span>
+                                <span class="skill-mod" data-field="mod">0</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">8</span>
+                            </div>
+                            <div class="skill-row" data-skill="endurance" data-stat="will">
+                                <span class="skill-name">Endurance (WILL)</span>
+                                <span class="skill-mod" data-field="mod">2</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">10</span>
+                            </div>
+                            <div class="skill-row" data-skill="resist-torture" data-stat="will">
+                                <span class="skill-name">Resist Torture/Drugs (WILL)</span>
+                                <span class="skill-mod" data-field="mod">4</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="4" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stealth Skills -->
+                    <div class="skill-category">
+                        <h3 class="category-header">Stealth (DEX)</h3>
+                        <div class="skill-table single-skill">
+                            <div class="skill-header">
+                                <span class="skill-name-col"></span>
+                                <span class="skill-mod">MOD</span>
+                                <span class="skill-lvl">LVL</span>
+                                <span class="skill-stat">STAT</span>
+                                <span class="skill-base">BASE</span>
+                            </div>
+                            <div class="skill-row" data-skill="stealth" data-stat="dex">
+                                <span class="skill-name"></span>
+                                <span class="skill-mod" data-field="mod">0</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control Skills -->
+                    <div class="skill-category">
+                        <h3 class="category-header">Control Skills</h3>
+                        <div class="skill-table">
+                            <div class="skill-header">
+                                <span class="skill-name-col"></span>
+                                <span class="skill-mod">MOD</span>
+                                <span class="skill-lvl">LVL</span>
+                                <span class="skill-stat">STAT</span>
+                                <span class="skill-base">BASE</span>
+                            </div>
+                            <div class="skill-row" data-skill="drive-land" data-stat="ref">
+                                <span class="skill-name">Drive Land Vehicle (REF)</span>
+                                <span class="skill-mod" data-field="mod">4</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="4" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">12</span>
+                            </div>
+                            <div class="skill-row" data-skill="pilot-air" data-stat="ref">
+                                <span class="skill-name">Pilot Air Vehicle (x2) (REF)</span>
+                                <span class="skill-mod" data-field="mod">4</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="4" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">12</span>
+                            </div>
+                            <div class="skill-row" data-skill="pilot-sea" data-stat="ref">
+                                <span class="skill-name">Pilot Sea Vehicle (REF)</span>
+                                <span class="skill-mod" data-field="mod">0</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">8</span>
+                            </div>
+                            <div class="skill-row" data-skill="riding" data-stat="ref">
+                                <span class="skill-name">Riding (REF)</span>
+                                <span class="skill-mod" data-field="mod">0</span>
+                                <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                                <span class="skill-stat" data-field="stat">8</span>
+                                <span class="skill-base" data-field="base">8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weapons and Armor -->
+                <div class="section weapons-armor">
+                    <h3>Weapons and Armor</h3>
+                    <div class="weapon-tables">
+                        <div class="armor-table">
+                            <h4>Armor</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Armor</th>
+                                        <th>Type</th>
+                                        <th>SP</th>
+                                        <th>Penalty</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="armor-list">
+                                    <tr>
+                                        <td><input type="text" value="Fleshweave [BODYARE] [UPG]"></td>
+                                        <td>Head</td>
+                                        <td><input type="number" value="8"></td>
+                                        <td><input type="number" value="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" value="Fleshweave [BODYARE] [UPG]"></td>
+                                        <td>Body</td>
+                                        <td><input type="number" value="8"></td>
+                                        <td><input type="number" value="0"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="add-btn" onclick="addArmor()">+ Add Armor</button>
+                        </div>
+
+                        <div class="weapon-table">
+                            <h4>Weapon</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Weapon</th>
+                                        <th>DMG</th>
+                                        <th>ROF</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="weapon-list">
+                                    <tr>
+                                        <td><input type="text" value="MARTIAL ARTS"></td>
+                                        <td><input type="text" value="4d6"></td>
+                                        <td><input type="number" value="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" value="TRI STAFF [AoM - Clones, Reach, Fragile, Concl]"></td>
+                                        <td><input type="text" value="4d6"></td>
+                                        <td><input type="number" value="1"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="add-btn" onclick="addWeapon()">+ Add Weapon</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Education Skills -->
+                <div class="skill-category">
+                    <h3 class="category-header">Education Skills</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="language" data-stat="int">
+                            <span class="skill-name">Language (INT) ==></span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row highlight" data-skill="streetslang" data-stat="int">
+                            <span class="skill-name">Streetslang</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="word-native" data-stat="int">
+                            <span class="skill-name">The Word (Native)</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="library-search" data-stat="int">
+                            <span class="skill-name">Library Search (INT)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row highlight" data-skill="local-expert" data-stat="int">
+                            <span class="skill-name">Local Expert (INT)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="south-night" data-stat="int">
+                            <span class="skill-name">South Night City</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="morro-rock" data-stat="int">
+                            <span class="skill-name">Morro Rock</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="science" data-stat="int">
+                            <span class="skill-name">Science (INT)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="chemistry" data-stat="int">
+                            <span class="skill-name">Chemistry</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="psychology" data-stat="int">
+                            <span class="skill-name">Psychology</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="tactics" data-stat="int">
+                            <span class="skill-name">Tactics (INT)</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="wilderness" data-stat="int">
+                            <span class="skill-name">Wilderness Survival (INT)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fighting Skill -->
+                <div class="skill-category">
+                    <h3 class="category-header">Fighting Skill</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="brawling" data-stat="dex">
+                            <span class="skill-name">Brawling (DEX)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">15</span>
+                        </div>
+                        <div class="skill-row" data-skill="evasion" data-stat="dex">
+                            <span class="skill-name">Evasion (DEX)</span>
+                            <span class="skill-mod" data-field="mod">8</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">15</span>
+                        </div>
+                        <div class="skill-row" data-skill="melee-weapon" data-stat="dex">
+                            <span class="skill-name">Melee Weapon (DEX)</span>
+                            <span class="skill-mod" data-field="mod">8</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">16</span>
+                        </div>
+                        <div class="skill-row" data-skill="martial-arts" data-stat="dex">
+                            <span class="skill-name">Mental Arts (x2) (DEX)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="taekwondo" data-stat="dex">
+                            <span class="skill-name">Taekwondo</span>
+                            <span class="skill-mod" data-field="mod">10</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">18</span>
+                        </div>
+                        <div class="skill-row" data-skill="kung-fu" data-stat="dex">
+                            <span class="skill-name">Kung Fu</span>
+                            <span class="skill-mod" data-field="mod">10</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">18</span>
+                        </div>
+                        <div class="skill-row" data-skill="tai-chi" data-stat="dex">
+                            <span class="skill-name">Tai Chi</span>
+                            <span class="skill-mod" data-field="mod">10</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">18</span>
+                        </div>
+                        <div class="skill-row" data-skill="kendo" data-stat="dex">
+                            <span class="skill-name">Kendo</span>
+                            <span class="skill-mod" data-field="mod">5</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">14</span>
+                        </div>
+                        <div class="skill-row" data-skill="aikisaido" data-stat="dex">
+                            <span class="skill-name">Aikisai-Te</span>
+                            <span class="skill-mod" data-field="mod">5</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">14</span>
+                        </div>
+                        <div class="skill-row" data-skill="threat-assess" data-stat="dex">
+                            <span class="skill-name">Threat Assesment</span>
+                            <span class="skill-mod" data-field="mod">5</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">14</span>
+                        </div>
+                        <div class="skill-row" data-skill="choy-li-fut" data-stat="dex">
+                            <span class="skill-name">Choy Li Fut</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="arts" data-stat="dex">
+                            <span class="skill-name">Arnis</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranged Weapon Skills -->
+                <div class="skill-category">
+                    <h3 class="category-header">Ranged Weapon Skills</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="archery" data-stat="ref">
+                            <span class="skill-name">Archery (REF)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="autofire" data-stat="ref">
+                            <span class="skill-name">Autofire (x2) (REF)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="handgun" data-stat="ref">
+                            <span class="skill-name">Handgun (REF)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="heavy-weapons" data-stat="ref">
+                            <span class="skill-name">Heavy Weapons (x2) (REF)</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="shoulder-arms" data-stat="ref">
+                            <span class="skill-name">Shoulder Arms (REF)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Skills -->
+                <div class="skill-category">
+                    <h3 class="category-header">Social Skills</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="bribery" data-stat="cool">
+                            <span class="skill-name">Bribery (COOL)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="conversation" data-stat="emp">
+                            <span class="skill-name">Conversation (EMP)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">2</span>
+                            <span class="skill-base" data-field="base">6</span>
+                        </div>
+                        <div class="skill-row" data-skill="human-perception" data-stat="emp">
+                            <span class="skill-name">Human Perception (EMP)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="7" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">2</span>
+                            <span class="skill-base" data-field="base">11</span>
+                        </div>
+                        <div class="skill-row" data-skill="interrogation" data-stat="cool">
+                            <span class="skill-name">Interrogation (COOL)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="persuasion" data-stat="cool">
+                            <span class="skill-name">Persuasion (COOL)</span>
+                            <span class="skill-mod" data-field="mod">5</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">14</span>
+                        </div>
+                        <div class="skill-row" data-skill="personal-grooming" data-stat="cool">
+                            <span class="skill-name">Personal Grooming (COOL)</span>
+                            <span class="skill-mod" data-field="mod">3</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="3" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">14</span>
+                        </div>
+                        <div class="skill-row" data-skill="streetwise" data-stat="cool">
+                            <span class="skill-name">Streetwise (COOL)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="trading" data-stat="cool">
+                            <span class="skill-name">Trading (COOL)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="wardrobe-style" data-stat="cool">
+                            <span class="skill-name">Wardrobe & Style (COOL)</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">14</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technique Skills -->
+                <div class="skill-category">
+                    <h3 class="category-header">Technique Skills</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="air-vehicle" data-stat="tech">
+                            <span class="skill-name">Air Vehicle Tech (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="basic-tech" data-stat="tech">
+                            <span class="skill-name">Basic Tech (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="cybertech" data-stat="tech">
+                            <span class="skill-name">Cybertech (TECH)</span>
+                            <span class="skill-mod" data-field="mod">6</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">14</span>
+                        </div>
+                        <div class="skill-row" data-skill="demolitions" data-stat="tech">
+                            <span class="skill-name">Demolitions (x2) (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="electronics-security" data-stat="tech">
+                            <span class="skill-name">Electronics/Security Tech (x2) (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="first-aid" data-stat="tech">
+                            <span class="skill-name">First Aid (TECH)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="2" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="forgery" data-stat="tech">
+                            <span class="skill-name">Forgery (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="land-vehicle" data-stat="tech">
+                            <span class="skill-name">Land Vehicle Tech (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="paint-draw" data-stat="tech">
+                            <span class="skill-name">Paint/Draw/Sculpt (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="paramedic" data-stat="tech">
+                            <span class="skill-name">Paramedic (x2) (TECH)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="5" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">15</span>
+                        </div>
+                        <div class="skill-row" data-skill="photography" data-stat="tech">
+                            <span class="skill-name">Photography/Film (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="pick-lock" data-stat="tech">
+                            <span class="skill-name">Pick Lock (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="pick-pocket" data-stat="tech">
+                            <span class="skill-name">Pick Pocket (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="sea-vehicle" data-stat="tech">
+                            <span class="skill-name">Sea Vehicle Tech (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="weaponstech" data-stat="tech">
+                            <span class="skill-name">Weaponstech (TECH)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Skills -->
+                <div class="skill-category">
+                    <h3 class="category-header">Performance Skills</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="acting" data-stat="cool">
+                            <span class="skill-name">Acting (COOL)</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="play-instrument" data-stat="tech">
+                            <span class="skill-name">Play Instrument (TECH)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cyberweapon -->
+                <div class="skill-category">
+                    <h3 class="category-header">Cyberweapon</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">DMG</span>
+                            <span class="skill-lvl">Ammo</span>
+                            <span class="skill-stat">ROF</span>
+                        </div>
+                        <div class="skill-row cyberweapon">
+                            <span class="skill-name">MAG3 PALM [EXC Heavy Melee] [UPG, Reach]</span>
+                            <span class="skill-mod">3d6</span>
+                            <span class="skill-lvl">2</span>
+                            <span class="skill-stat">2</span>
+                        </div>
+                        <div class="skill-row cyberweapon">
+                            <span class="skill-name highlighted">• 16MM [Sets Strong On Fire]</span>
+                            <span class="skill-mod">3d6</span>
+                            <span class="skill-lvl">1</span>
+                            <span class="skill-stat">2</span>
+                        </div>
+                        <div class="skill-row cyberweapon">
+                            <span class="skill-name">• 10MM [DV & Endurance, Reach]</span>
+                            <span class="skill-mod">3d6</span>
+                            <span class="skill-lvl">1</span>
+                            <span class="skill-stat">2</span>
+                        </div>
+                        <div class="skill-row cyberweapon">
+                            <span class="skill-name highlighted">• FULBUR [DV & DV.Endurence.Baer]</span>
+                            <span class="skill-mod">3d6</span>
+                            <span class="skill-lvl">1</span>
+                            <span class="skill-stat">2</span>
+                        </div>
+                        <div class="skill-row cyberweapon">
+                            <span class="skill-name highlighted">• SEDATIVE [DV & RITE Unconscious]</span>
+                            <span class="skill-mod">5</span>
+                            <span class="skill-lvl">1</span>
+                            <span class="skill-stat">1</span>
+                        </div>
+                        <div class="skill-row cyberweapon">
+                            <span class="skill-name highlighted">• VERITAS [DV 17 RITE.Subjectives]</span>
+                            <span class="skill-mod">5</span>
+                            <span class="skill-lvl">1</span>
+                            <span class="skill-stat">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Skills + -->
+                <div class="skill-category">
+                    <h3 class="category-header">Education Skills +</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="language-2" data-stat="int">
+                            <span class="skill-name">Language (INT)</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="french" data-stat="int">
+                            <span class="skill-name">French</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="russian" data-stat="int">
+                            <span class="skill-name">Russian</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="korean" data-stat="int">
+                            <span class="skill-name">Korean</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="spanish" data-stat="int">
+                            <span class="skill-name">Spanish</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="mandarin" data-stat="int">
+                            <span class="skill-name">Mandarin</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="arabic" data-stat="int">
+                            <span class="skill-name">Arabic</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="german" data-stat="int">
+                            <span class="skill-name">German</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fighting Skills + -->
+                <div class="skill-category">
+                    <h3 class="category-header">Fighting Skills +</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="capoeria" data-stat="dex">
+                            <span class="skill-name">Capoeria</span>
+                            <span class="skill-mod" data-field="mod">4</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">12</span>
+                        </div>
+                        <div class="skill-row" data-skill="muay-thai" data-stat="dex">
+                            <span class="skill-name">Muay Thai</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="sumo" data-stat="dex">
+                            <span class="skill-name">Sumo</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="taijutsu" data-stat="dex">
+                            <span class="skill-name">Taijutsu [Krav Maga]</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MedTech Specialties -->
+                <div class="skill-category">
+                    <h3 class="category-header">MedTech Specialties</h3>
+                    <div class="skill-table">
+                        <div class="skill-header">
+                            <span class="skill-name-col"></span>
+                            <span class="skill-mod">MOD</span>
+                            <span class="skill-lvl">LVL</span>
+                            <span class="skill-stat">STAT</span>
+                            <span class="skill-base">BASE</span>
+                        </div>
+                        <div class="skill-row" data-skill="surgery" data-stat="tech">
+                            <span class="skill-name">Surgery (TECH)</span>
+                            <span class="skill-mod" data-field="mod">2</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">10</span>
+                        </div>
+                        <div class="skill-row" data-skill="pharmaceuticals" data-stat="tech">
+                            <span class="skill-name">Pharmaceuticals</span>
+                            <span class="skill-mod" data-field="mod">5</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">13</span>
+                        </div>
+                        <div class="skill-row" data-skill="cryotank" data-stat="tech">
+                            <span class="skill-name">Cryotank Op</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="rapiddetox" data-stat="tech">
+                            <span class="skill-name">RapidDetox</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="speedheal" data-stat="tech">
+                            <span class="skill-name">Speedheal</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="vertos" data-stat="tech">
+                            <span class="skill-name">Vertos</span>
+                            <span class="skill-mod" data-field="mod">0</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">8</span>
+                        </div>
+                        <div class="skill-row" data-skill="medical-tech" data-stat="tech">
+                            <span class="skill-name">Medical Tech (Calculated)</span>
+                            <span class="skill-mod" data-field="mod">5</span>
+                            <input type="number" class="skill-lvl" data-field="lvl" value="0" min="0" max="10">
+                            <span class="skill-stat" data-field="stat">8</span>
+                            <span class="skill-base" data-field="base">13</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicles -->
+                <div class="section vehicles-section">
+                    <h3>Vehicles</h3>
+                    <div class="vehicle-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Vehicle Name</th>
+                                    <th>SDP</th>
+                                    <th>SP</th>
+                                    <th>Speed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehicle-list">
+                                <tr>
+                                    <td><input type="text" value="EXAN NIORA"></td>
+                                    <td><input type="text" value="50 MOVE/300"></td>
+                                    <td><input type="number" value="13"></td>
+                                    <td>mph</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="vehicle-details">
+                            <h4>Upgrades</h4>
+                            <ul>
+                                <li>AV-4 Engine Upgrade - High Performance Tuning</li>
+                                <li>Seating Upgrade - Communications Center</li>
+                                <li>Combat Plow - Combat Plow</li>
+                                <li>Smart Vehicle System</li>
+                                <li>Radio Communicator - R/S Countermeasures</li>
+                                <li>Security Upgrade - Cloaking Accelerator x2</li>
+                                <li>Onboard Grafting - Slo & Obstrum Grafting</li>
+                                <li>Armored Chassis - Onboard Melee (LEFT/RIGHT)</li>
+                                <li>Bulletproof Glass x2 (UPG) - Blast-Proof Glass</li>
+                            </ul>
+                        </div>
+                        <button class="add-btn" onclick="addVehicle()">+ Add Vehicle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
