@@ -261,26 +261,8 @@
                                         <td class="stat">8</td>
                                         <td class="base">12</td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Stealth -->
-                        <div class="skill-section">
-                            <div class="section-header">Stealth (DEX)</div>
-                            <table class="skill-table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>MOD</th>
-                                        <th>LVL</th>
-                                        <th>STAT</th>
-                                        <th>BASE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
                                     <tr class="skill-row" data-skill="stealth" data-stat="dex">
-                                        <td></td>
+                                        <td>Stealth (DEX)</td>
                                         <td class="mod"><input type="number" value="2" min="0"></td>
                                         <td class="lvl"><input type="number" value="0" min="0"></td>
                                         <td class="stat">8</td>
@@ -441,26 +423,96 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="skill-row" data-skill="language-int" data-stat="int">
-                                        <td>Language (INT) →</td>
+                                    <tr class="skill-row collapsible-parent" data-skill="language-int" data-stat="int" data-group="languages">
+                                        <td>Language (INT) → <span class="item-count">(12)</span></td>
                                         <td class="mod"><input type="number" value="0" min="0"></td>
                                         <td class="lvl"><input type="number" value="0" min="0"></td>
                                         <td class="stat">8</td>
                                         <td class="base">8</td>
                                     </tr>
-                                    <tr class="skill-row indent" data-skill="streetslang" data-stat="int">
+                                    <tr class="skill-row indent collapsible-child" data-skill="streetslang" data-stat="int" data-parent="languages">
                                         <td>Streetslang</td>
                                         <td class="mod"><input type="number" value="2" min="0"></td>
                                         <td class="lvl"><input type="number" value="2" min="0"></td>
                                         <td class="stat">8</td>
                                         <td class="base">10</td>
                                     </tr>
-                                    <tr class="skill-row indent" data-skill="the-word" data-stat="int">
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="the-word" data-stat="int">
                                         <td>The Word (Native)</td>
                                         <td class="mod"><input type="number" value="4" min="0"></td>
                                         <td class="lvl"><input type="number" value="4" min="0"></td>
                                         <td class="stat">8</td>
                                         <td class="base">12</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="french" data-stat="int">
+                                        <td>French</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="russian" data-stat="int">
+                                        <td>Russian</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="korean" data-stat="int">
+                                        <td>Korean</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="spanish" data-stat="int">
+                                        <td>Spanish</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="mandarin" data-stat="int">
+                                        <td>Mandarin</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="arabic" data-stat="int">
+                                        <td>Arabic</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="german" data-stat="int">
+                                        <td>German</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="swahili" data-stat="int">
+                                        <td>Swahili</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="english" data-stat="int">
+                                        <td>English</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent collapsible-child" data-parent="languages" data-skill="sign" data-stat="int">
+                                        <td>Sign</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
                                     </tr>
                                     <tr class="skill-row" data-skill="library-search" data-stat="int">
                                         <td>Library Search (INT)</td>
@@ -626,6 +678,34 @@
                                         <td class="lvl"><input type="number" value="4" min="0"></td>
                                         <td class="stat">8</td>
                                         <td class="base">12</td>
+                                    </tr>
+                                    <tr class="skill-row indent" data-skill="grappling" data-stat="dex">
+                                        <td>Grappling</td>
+                                        <td class="mod"><input type="number" value="0" min="0"></td>
+                                        <td class="lvl"><input type="number" value="0" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">12</td>
+                                    </tr>
+                                    <tr class="skill-row indent" data-skill="muay-thai" data-stat="dex">
+                                        <td>Muay Thai</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent" data-skill="sumo" data-stat="dex">
+                                        <td>Sumo</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
+                                    </tr>
+                                    <tr class="skill-row indent" data-skill="systems-krav-maga" data-stat="dex">
+                                        <td>Systems Krav Maga</td>
+                                        <td class="mod"><input type="number" value="2" min="0"></td>
+                                        <td class="lvl"><input type="number" value="2" min="0"></td>
+                                        <td class="stat">8</td>
+                                        <td class="base">10</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -904,164 +984,6 @@
                                         <td class="lvl"><input type="number" value="0" min="0"></td>
                                         <td class="stat">8</td>
                                         <td class="base">8</td>
-                                    </tr>
-                                    <tr class="skill-row" data-skill="sea-vehicle-tech" data-stat="tech">
-                                        <td>Sea Vehicle Tech (TECH)</td>
-                                        <td class="mod"><input type="number" value="0" min="0"></td>
-                                        <td class="lvl"><input type="number" value="0" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">8</td>
-                                    </tr>
-                                    <tr class="skill-row" data-skill="weaponsmith" data-stat="tech">
-                                        <td>Weaponsmith (TECH)</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- COLUMN 4 OF SKILLS -->
-                    <div class="skills-column">
-                        <!-- Education Skills + (Additional Languages) -->
-                        <div class="skill-section">
-                            <div class="section-header">Education Skills +</div>
-                            <table class="skill-table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>MOD</th>
-                                        <th>LVL</th>
-                                        <th>STAT</th>
-                                        <th>BASE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="skill-row" data-skill="language-main" data-stat="int">
-                                        <td>Language (INT)</td>
-                                        <td class="mod"><input type="number" value="0" min="0"></td>
-                                        <td class="lvl"><input type="number" value="0" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">8</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="french" data-stat="int">
-                                        <td>French</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="russian" data-stat="int">
-                                        <td>Russian</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="korean" data-stat="int">
-                                        <td>Korean</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="spanish" data-stat="int">
-                                        <td>Spanish</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="mandarin" data-stat="int">
-                                        <td>Mandarin</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="arabic" data-stat="int">
-                                        <td>Arabic</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="german" data-stat="int">
-                                        <td>German</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="swahili" data-stat="int">
-                                        <td>Swahili</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="english" data-stat="int">
-                                        <td>English</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row indent" data-skill="sign" data-stat="int">
-                                        <td>Sign</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Fighting Skills + -->
-                        <div class="skill-section">
-                            <div class="section-header">Fighting Skills +</div>
-                            <table class="skill-table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>MOD</th>
-                                        <th>LVL</th>
-                                        <th>STAT</th>
-                                        <th>BASE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="skill-row" data-skill="grappling" data-stat="dex">
-                                        <td>Grappling</td>
-                                        <td class="mod"><input type="number" value="0" min="0"></td>
-                                        <td class="lvl"><input type="number" value="0" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">12</td>
-                                    </tr>
-                                    <tr class="skill-row" data-skill="muay-thai" data-stat="dex">
-                                        <td>Muay Thai</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row" data-skill="sumo" data-stat="dex">
-                                        <td>Sumo</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
-                                    </tr>
-                                    <tr class="skill-row" data-skill="systems-krav-maga" data-stat="dex">
-                                        <td>Systems Krav Maga</td>
-                                        <td class="mod"><input type="number" value="2" min="0"></td>
-                                        <td class="lvl"><input type="number" value="2" min="0"></td>
-                                        <td class="stat">8</td>
-                                        <td class="base">10</td>
                                     </tr>
                                 </tbody>
                             </table>

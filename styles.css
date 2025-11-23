@@ -602,6 +602,14 @@ body {
 
 .skill-table thead th:first-child {
     text-align: left;
+    width: 60%;
+}
+
+.skill-table thead th:nth-child(2),
+.skill-table thead th:nth-child(3),
+.skill-table thead th:nth-child(4),
+.skill-table thead th:nth-child(5) {
+    width: 10%;
 }
 
 .skill-table tbody td {
@@ -663,6 +671,32 @@ body {
 
 .skill-table .lvl input:focus,
 .skill-table .mod input:focus {
+    outline: none;
+    background: rgba(255, 0, 51, 0.1);
+    color: var(--red-primary);
+}
+
+/* VEHICLE, ARMOR, AND WEAPON TABLE INPUTS */
+#vehicle-list input[type="text"],
+#vehicle-list input[type="number"],
+#armor-list input[type="text"],
+#armor-list input[type="number"],
+#weapon-list input[type="text"],
+#weapon-list input[type="number"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    padding: 2px 4px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    font-weight: 400;
+}
+
+#vehicle-list input:focus,
+#armor-list input:focus,
+#weapon-list input:focus {
     outline: none;
     background: rgba(255, 0, 51, 0.1);
     color: var(--red-primary);

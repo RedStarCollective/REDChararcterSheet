@@ -90,7 +90,7 @@ function updateSkillRow(row, statName) {
     const lvl = parseInt(lvlInput.value) || 0;
     const mod = modInput ? (parseInt(modInput.value) || 0) : 0;
     const statValue = stats[statName] || 0;
-    const base = statValue + mod;
+    const base = statValue + lvl + mod;
 
     statCell.textContent = statValue;
     baseCell.textContent = base;
