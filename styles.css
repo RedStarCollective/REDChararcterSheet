@@ -638,6 +638,25 @@ body {
     font-size: 8px;
 }
 
+/* Collapsible sections */
+.collapsible-parent {
+    cursor: pointer;
+}
+
+.collapsible-parent:hover {
+    background: rgba(255, 0, 51, 0.1);
+}
+
+.collapsible-child.collapsed {
+    display: none;
+}
+
+.item-count {
+    color: var(--text-dim);
+    font-size: 8px;
+    font-style: italic;
+}
+
 .skill-table tbody tr:hover {
     background: rgba(255, 0, 51, 0.05);
 }

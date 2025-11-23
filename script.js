@@ -18,6 +18,7 @@ const stats = {
 document.addEventListener('DOMContentLoaded', function() {
     initializeStats();
     initializeSkills();
+    initializeCollapsibles();
     initializePortraitUpload();
     attachEventListeners();
     loadCharacterData();
@@ -481,3 +482,39 @@ window.exportCharacter = exportCharacter;
 window.importCharacter = importCharacter;
 window.resetCharacter = resetCharacter;
 window.printCharacter = printCharacter;
+
+// Initialize collapsible sections
+function initializeCollapsibles() {
+    // Get all collapsible parent rows
+    const parents = document.querySelectorAll('.collapsible-parent');
+    
+    parents.forEach(parent => {
+        const group = parent.dataset.group;
+        const children = document.querySelectorAll(`.collapsible-child[data-parent="${group}"]`);
+        
+        // Start collapsed
+        children.forEach(child => {
+            child.classList.add('collapsed');
+        });
+        
+        // Add click handler
+        parent.style.cursor = 'pointer';
+        parent.addEventListener('click', (e) => {
+            // Don't toggle if clicking on an input
+            if (e.target.tagName === 'INPUT') return;
+            
+            const isCollapsed = children[0]?.classList.contains('collapsed');
+            
+            children.forEach(child => {
+                if (isCollapsed) {
+                    child.classList.remove('collapsed');
+                } else {
+                    child.classList.add('collapsed');
+                }
+            });
+            
+            // Toggle arrow indicator
+            parent.classList.toggle('expanded', isCollapsed);
+        });
+    });
+}
