@@ -880,10 +880,6 @@
                             </table>
                         </div>
 
-                    </div>
-
-                    <!-- COLUMN 4 OF SKILLS -->
-                    <div class="skills-column">
                         <!-- Technique Skills -->
                         <div class="skill-section">
                             <div class="section-header">Technique Skills</div>
@@ -993,9 +989,6 @@
                             </table>
                         </div>
 
-                    </div>
-                    </div>
-                </div>
                         <!-- MedTech Specialties -->
                         <div class="skill-section">
                             <div class="section-header">MedTech Specialties</div>
@@ -1102,6 +1095,8 @@
                                 <p>Bulletproof Glass x2 (UPG) - Block-Proof Glass</p>
                             </div>
                         </div>
+                    </div>
+                </div>
 
                 <!-- Weapons and Armor Section -->
                 <div class="weapons-section">
