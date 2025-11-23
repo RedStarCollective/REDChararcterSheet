@@ -616,8 +616,18 @@ body {
 }
 
 .skill-table tbody tr.indent td:first-child {
-    padding-left: 12px;
+    padding-left: 16px;
     font-size: 9px;
+    color: var(--text-dim);
+    position: relative;
+}
+
+.skill-table tbody tr.indent td:first-child::before {
+    content: '└';
+    position: absolute;
+    left: 6px;
+    color: var(--border-dim);
+    font-size: 8px;
 }
 
 .skill-table tbody tr:hover {
@@ -633,26 +643,29 @@ body {
     font-size: 9px;
 }
 
-.skill-table .lvl {
+.skill-table .lvl,
+.skill-table .mod {
     text-align: center;
 }
 
-.skill-table .lvl input {
-    width: 100%;
-    background: var(--input-bg);
-    border: 1px solid var(--border-dim);
-    color: var(--red-primary);
-    padding: 1px 2px;
+.skill-table .lvl input,
+.skill-table .mod input {
+    width: 30px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    padding: 0;
     text-align: center;
-    font-family: 'Rajdhani', monospace;
-    font-size: 10px;
-    font-weight: 600;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    font-weight: 400;
 }
 
-.skill-table .lvl input:focus {
+.skill-table .lvl input:focus,
+.skill-table .mod input:focus {
     outline: none;
-    border-color: var(--red-primary);
-    box-shadow: 0 0 4px rgba(255, 0, 51, 0.4);
+    background: rgba(255, 0, 51, 0.1);
+    color: var(--red-primary);
 }
 
 /* WEAPONS SECTION */

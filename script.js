@@ -59,10 +59,18 @@ function initializeSkills() {
     skillRows.forEach(row => {
         const skillName = row.dataset.skill;
         const statName = row.dataset.stat;
-        const lvlInput = row.querySelector('.lvl');
+        const lvlInput = row.querySelector('.lvl input');
+        const modInput = row.querySelector('.mod input');
 
         if (lvlInput) {
             lvlInput.addEventListener('input', function() {
+                updateSkillRow(row, statName);
+                saveCharacterData();
+            });
+        }
+
+        if (modInput) {
+            modInput.addEventListener('input', function() {
                 updateSkillRow(row, statName);
                 saveCharacterData();
             });
@@ -72,19 +80,18 @@ function initializeSkills() {
 
 // Update a single skill row
 function updateSkillRow(row, statName) {
-    const lvlInput = row.querySelector('.lvl');
-    const modCell = row.querySelector('.mod');
+    const lvlInput = row.querySelector('.lvl input');
+    const modInput = row.querySelector('.mod input');
     const statCell = row.querySelector('.stat');
     const baseCell = row.querySelector('.base');
 
     if (!lvlInput || !statCell || !baseCell) return;
 
     const lvl = parseInt(lvlInput.value) || 0;
+    const mod = modInput ? (parseInt(modInput.value) || 0) : 0;
     const statValue = stats[statName] || 0;
-    const mod = lvl; // In some character sheets, modifier might be different
-    const base = statValue + lvl;
+    const base = statValue + mod;
 
-    if (modCell) modCell.textContent = mod;
     statCell.textContent = statValue;
     baseCell.textContent = base;
 }
