@@ -299,7 +299,7 @@ function getSkillData() {
 
     skillRows.forEach(row => {
         const skillName = row.dataset.skill;
-        const lvlInput = row.querySelector('.lvl');
+        const lvlInput = row.querySelector('.lvl input');
         if (lvlInput) {
             skills[skillName] = parseInt(lvlInput.value) || 0;
         }
@@ -372,7 +372,7 @@ function loadCharacterData() {
             Object.entries(characterData.skills).forEach(([skillName, level]) => {
                 const row = document.querySelector(`[data-skill="${skillName}"]`);
                 if (row) {
-                    const lvlInput = row.querySelector('.lvl');
+                    const lvlInput = row.querySelector('.lvl input');
                     if (lvlInput) {
                         lvlInput.value = level;
                         updateSkillRow(row, row.dataset.stat);
